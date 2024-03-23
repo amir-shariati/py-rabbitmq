@@ -44,31 +44,7 @@ services:
 
 volumes:
   rabbitmq-data:
-#    name: rabbitmq-data-volume
-#    driver: local
-#    driver_opts:
-#      type: none
-#      o: bind
-#      # device: ":/docker/example"
-##      device: "/home/amir/Documents/docker-RabbitMQ/rabitmq-data-vol"
-#      device: ${PWD}/vol/rabitmq-data-vol
-
-  # rabbitmq-conf:
-  #   name: rabbitmq-conf-volume
-  #   driver: local
-  #   driver_opts:
-  #     type: none
-  #     o: bind
-  #     device: "/home/amir/Documents/docker-RabbitMQ/rabbitmq-conf-vol"
-
   rabbitmq-log:
-#    name: rabbitmq-conf-volume
-#    driver: local
-#    driver_opts:
-#      type: none
-#      o: bind
-##      device: "/home/amir/Documents/docker-RabbitMQ/rabbitmq-log-vol"
-#      device: ${PWD}/vol/rabbitmq-log-vol
 
 
 networks:
