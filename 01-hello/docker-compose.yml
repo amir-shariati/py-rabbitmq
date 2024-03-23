@@ -1,0 +1,78 @@
+version: '3.7'
+
+
+services:
+
+  rabbitmq_server:
+    container_name: rabbitmq_container
+    # image: rabbitmq:3.8-management-alpine
+    image: rabbitmq:3-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=1234
+    volumes:
+        # - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - rabbitmq-data:/var/lib/rabbitmq/
+        # - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+        - rabbitmq-log:/var/log/rabbitmq
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+    networks:
+       - py-rabbitmq-net-dev
+    restart: unless-stopped
+
+  send-dev:
+    image: py-hello-send-dev
+    container_name: py-hello-send-dev-cnt
+    env_file: env/.env.dev
+    build:
+      context: .
+      dockerfile: sender/dev/Dockerfile
+#    ports:
+#      - '8000:8000'
+    volumes:
+#      - '.:/app'
+      - ./sender:/app
+#    command: python sender/send.py
+    command: /start
+    depends_on:
+      - rabbitmq_server
+    networks:
+      - py-rabbitmq-net-dev
+
+
+volumes:
+  rabbitmq-data:
+#    name: rabbitmq-data-volume
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+#      # device: ":/docker/example"
+##      device: "/home/amir/Documents/docker-RabbitMQ/rabitmq-data-vol"
+#      device: ${PWD}/vol/rabitmq-data-vol
+
+  # rabbitmq-conf:
+  #   name: rabbitmq-conf-volume
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: "/home/amir/Documents/docker-RabbitMQ/rabbitmq-conf-vol"
+
+  rabbitmq-log:
+#    name: rabbitmq-conf-volume
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+##      device: "/home/amir/Documents/docker-RabbitMQ/rabbitmq-log-vol"
+#      device: ${PWD}/vol/rabbitmq-log-vol
+
+
+networks:
+  py-rabbitmq-net-dev:
+    driver: bridge
