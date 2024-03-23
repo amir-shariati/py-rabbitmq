@@ -21,6 +21,3 @@ RUN chmod +x /start.sh
 WORKDIR /app
 
 ENTRYPOINT ["/entrypoint"]
-#
-## start command
-#CMD [ "python", "send.py" ]
