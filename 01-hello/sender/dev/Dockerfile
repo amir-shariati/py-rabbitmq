@@ -14,6 +14,9 @@ RUN pip install -r /requirements.txt
 COPY ./sender/dev/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
 RUN chmod +x /entrypoint
+COPY ./sender/dev/entrypoint.sh /entrypoint.sh
+RUN sed -i 's/\r$//g' /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 #COPY ./compose/develop/python/start /start
 COPY ./sender/dev/start /start
