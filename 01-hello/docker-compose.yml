@@ -31,8 +31,6 @@ services:
     build:
       context: .
       dockerfile: sender/dev/Dockerfile
-#    ports:
-#      - '8000:8000'
     volumes:
 #      - '.:/app'
       - ./sender:/app
