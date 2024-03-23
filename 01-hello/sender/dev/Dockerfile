@@ -14,10 +14,9 @@ COPY ./sender/dev/entrypoint.sh /entrypoint.sh
 RUN sed -i 's/\r$//g' /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-#COPY ./compose/develop/python/start /start
-COPY ./sender/dev/start /start
-RUN sed -i 's/\r$//g' /start
-RUN chmod +x /start
+COPY ./sender/dev/start.sh /start.sh
+RUN sed -i 's/\r$//g' /start.sh
+RUN chmod +x /start.sh
 
 WORKDIR /app
 
