@@ -35,7 +35,7 @@ services:
 #      - '.:/app'
       - ./sender:/app
 #    command: python sender/send.py
-    command: /start
+    command: /start.sh
     depends_on:
       - rabbitmq_server
     networks:
