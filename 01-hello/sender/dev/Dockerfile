@@ -10,10 +10,6 @@ COPY ./requirements/common.txt /common.txt
 COPY ./requirements/dev.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
-#COPY ./compose/develop/python/entrypoint /entrypoint
-COPY ./sender/dev/entrypoint /entrypoint
-RUN sed -i 's/\r$//g' /entrypoint
-RUN chmod +x /entrypoint
 COPY ./sender/dev/entrypoint.sh /entrypoint.sh
 RUN sed -i 's/\r$//g' /entrypoint.sh
 RUN chmod +x /entrypoint.sh
