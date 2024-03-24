@@ -1,7 +1,5 @@
 import os
 import pika
-import random
-from hashlib import sha256
 import uuid
 
 # import socket
