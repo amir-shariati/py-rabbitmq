@@ -21,7 +21,6 @@ try:
 
     channel.queue_declare(queue='hello_queue')
 
-    # rand_str = random.getrandbits(128)
     rand_str = uuid.uuid4()
 
     channel.basic_publish(exchange='', routing_key='hello_queue', body=f'This is {rand_str}')
