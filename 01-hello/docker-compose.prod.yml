@@ -1,0 +1,90 @@
+
+#services:
+#
+#  # service 1 named backend-dev
+#  web-prod:
+#    image: ticket-web-prod
+#
+#    # service 1 container name
+#    container_name: ticket-web-prod-cnt
+#
+#    env_file: env/.env.prod
+#
+#    build:
+#      # the context (working directory) is the current directory
+#      # change this to the directory containing the Dockerfile.dev if in a different place
+#      context: .
+#      # the Dockerfile.dev to be run
+#      dockerfile: compose/production/django/Dockerfile
+#
+#    # the mounted volumes (folders which are outside docker but being used by docker)
+#    volumes:
+#      - static_volume:/home/app/web/staticfiles
+#      - media_volume:/home/app/web/mediafiles
+#
+##    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
+#    command: ./start.sh.sh
+#
+##    # to be used to access the container from the outside
+##    ports:
+##      - '8000:8000'
+#    expose:
+#      - 8000
+#    networks:
+#      - ticket-net
+#    restart: always
+#
+#    depends_on:
+#      - redis
+#      - db
+#
+
+version: '3.7'
+
+
+services:
+
+  rabbitmq_server:
+    container_name: rabbitmq_container
+    image: rabbitmq:3-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=1234
+    volumes:
+        - rabbitmq-data:/var/lib/rabbitmq/
+        - rabbitmq-log:/var/log/rabbitmq
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+    networks:
+       - py-rabbitmq-net-prod
+    restart: unless-stopped
+
+  send-prod:
+    image: py-hello-send-prod
+    container_name: py-hello-send-prod-cnt
+    env_file: env/.env.prod
+    build:
+      context: .
+      dockerfile: sender/prod/Dockerfile
+    volumes:
+#      - '.:/app'
+      - ./sender:/app
+#    command: python sender/send.py
+    command: /start.sh.sh
+    depends_on:
+      - rabbitmq_server
+    networks:
+      - py-rabbitmq-net-prod
+
+
+volumes:
+  rabbitmq-data:
+  rabbitmq-log:
+
+
+networks:
+  py-rabbitmq-net-prod:
+    driver: bridge
