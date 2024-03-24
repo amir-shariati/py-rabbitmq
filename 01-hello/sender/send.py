@@ -2,12 +2,6 @@ import os
 import pika
 import uuid
 
-# import socket
-# client = docker.from_env()
-# network_name = "uv_atp_network"
-# atp_container = client.containers.get(socket.gethostname())
-# client.networks.get(network_name).connect(container=atp_container.id)
-
 
 username = os.environ['RABBITMQ_DEFAULT_USER']
 password = os.environ['RABBITMQ_DEFAULT_PASS']
