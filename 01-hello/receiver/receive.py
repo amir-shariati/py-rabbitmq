@@ -14,7 +14,7 @@ def main():
     print(f'password: {password}')
 
     # Set the connection parameters to connect to localhost on port 5672
-    credentials = pika.PlainCredentials(username='admin', password='1234')
+    credentials = pika.PlainCredentials(username=username, password=password)
     parameters = pika.ConnectionParameters(host='localhost', port=5672, credentials=credentials)
 
     # connection = pika.BlockingConnection(parameters=pika.ConnectionParameters(host='localhost', port=5672))
