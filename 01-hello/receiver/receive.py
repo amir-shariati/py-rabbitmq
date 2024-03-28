@@ -8,6 +8,11 @@ def on_message_callback_fcn(channel, method, properties, body):
 
 
 def main():
+    username = os.environ['RABBITMQ_DEFAULT_USER']
+    password = os.environ['RABBITMQ_DEFAULT_PASS']
+    print(f'username: {username}')
+    print(f'password: {password}')
+
     # Set the connection parameters to connect to localhost on port 5672
     credentials = pika.PlainCredentials(username='admin', password='1234')
     parameters = pika.ConnectionParameters(host='localhost', port=5672, credentials=credentials)
