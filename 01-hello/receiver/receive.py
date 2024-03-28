@@ -19,7 +19,6 @@ def main():
     # parameters = pika.ConnectionParameters(host='localhost', port=5672, credentials=credentials)
     parameters = pika.ConnectionParameters(host='rabbitmq_server', port=5672, credentials=credentials)
 
-    # connection = pika.BlockingConnection(parameters=pika.ConnectionParameters(host='localhost', port=5672))
     connection = pika.BlockingConnection(parameters=parameters)
     channel = connection.channel()
     channel.queue_declare(queue='hello_queue')
