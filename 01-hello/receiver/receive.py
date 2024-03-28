@@ -15,7 +15,9 @@ def main():
 
     # Set the connection parameters to connect to localhost on port 5672
     credentials = pika.PlainCredentials(username=username, password=password)
-    parameters = pika.ConnectionParameters(host='localhost', port=5672, credentials=credentials)
+
+    # parameters = pika.ConnectionParameters(host='localhost', port=5672, credentials=credentials)
+    parameters = pika.ConnectionParameters(host='rabbitmq_server', port=5672, credentials=credentials)
 
     # connection = pika.BlockingConnection(parameters=pika.ConnectionParameters(host='localhost', port=5672))
     connection = pika.BlockingConnection(parameters=parameters)
