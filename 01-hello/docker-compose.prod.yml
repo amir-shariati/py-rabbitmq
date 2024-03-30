@@ -39,6 +39,22 @@ services:
     networks:
       - py-rabbitmq-net-prod
 
+  receive-prod:
+    image: py-hello-receive-prod
+    container_name: py-hello-receive-prod-cnt
+    env_file: env/.env.prod
+    build:
+      context: .
+      dockerfile: receiver/prod/Dockerfile
+    volumes:
+#      - '.:/app'
+      - ./receive:/app
+#    command: python sender/send.py
+    command: /start.sh.sh
+    depends_on:
+      - rabbitmq_server
+    networks:
+      - py-rabbitmq-net-prod
 
 volumes:
   rabbitmq-data:
