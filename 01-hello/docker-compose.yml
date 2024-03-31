@@ -41,6 +41,22 @@ services:
     networks:
       - py-rabbitmq-net-dev
 
+  recv-dev:
+    image: py-hello-recv-dev
+    container_name: py-hello-recv-dev-cnt
+    env_file: env/.env.dev
+    build:
+      context: .
+      dockerfile: receiver/dev/Dockerfile
+    volumes:
+#      - '.:/app'
+      - ./receiver:/app
+#    command: python receiver/receive.py
+    command: /start.sh
+    depends_on:
+      - rabbitmq_server
+    networks:
+      - py-rabbitmq-net-dev
 
 volumes:
   rabbitmq-data:
