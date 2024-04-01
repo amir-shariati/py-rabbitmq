@@ -50,7 +50,6 @@ services:
       dockerfile: receiver/dev/Dockerfile
     volumes:
       - ./receiver:/app
-#    command: python receiver/receive.py
     command: /start.sh
     depends_on:
       - rabbitmq_server
