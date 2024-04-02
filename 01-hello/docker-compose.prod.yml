@@ -30,7 +30,6 @@ services:
       context: .
       dockerfile: sender/prod/Dockerfile
     volumes:
-#      - '.:/app'
       - ./sender:/app
 #    command: python sender/send.py
     command: /start.sh.sh
