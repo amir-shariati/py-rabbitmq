@@ -31,7 +31,6 @@ services:
       dockerfile: sender/prod/Dockerfile
     volumes:
       - ./sender:/app
-#    command: python sender/send.py
     command: /start.sh.sh
     depends_on:
       - rabbitmq_server
