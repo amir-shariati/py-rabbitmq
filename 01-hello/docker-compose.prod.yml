@@ -45,7 +45,6 @@ services:
       context: .
       dockerfile: receiver/prod/Dockerfile
     volumes:
-#      - '.:/app'
       - ./receive:/app
 #    command: python sender/send.py
     command: /start.sh.sh
