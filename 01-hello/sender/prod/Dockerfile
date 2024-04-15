@@ -38,7 +38,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requir
 
 # pull official base image
 #FROM python:3.11.4-slim-buster
-FROM python:3.12.2-slim-buster
+FROM python:3.12.2-slim
 
 # create directory for the app user
 RUN mkdir -p /home/app
