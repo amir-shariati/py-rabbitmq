@@ -7,4 +7,5 @@ set -o pipefail
 # exits if any of your variables is not set
 set -o nounset
 
+echo "run /start.sh commands"
 python recv.py
