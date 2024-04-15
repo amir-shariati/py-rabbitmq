@@ -57,7 +57,8 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 # install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends netcat
+#RUN #apt-get update && apt-get install -y --no-install-recommends netcat
+#RUN #apt-get update && apt-get install -y --no-install-recommends
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/common.txt .
 COPY --from=builder /usr/src/app/requirements.txt .
