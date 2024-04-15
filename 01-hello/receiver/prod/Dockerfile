@@ -95,5 +95,5 @@ USER app
 # run entrypoint.sh.prod.sh
 #ENTRYPOINT ["/home/app/web/entrypoint.sh.prod.sh"]
 #ENTRYPOINT ["/home/app/web/entrypoint.sh"]
-ENTRYPOINT ["/home/app/send/entrypoint.sh"]
+ENTRYPOINT ["/home/app/recv/entrypoint.sh"]
 
