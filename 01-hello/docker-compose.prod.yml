@@ -29,9 +29,9 @@ services:
     build:
       context: .
       dockerfile: sender/prod/Dockerfile
-    volumes:
-      - ./sender:/app
-    command: /start.sh.sh
+#    volumes:
+#      - ./sender:/app
+    command: /home/app/send/start.sh
     depends_on:
       - rabbitmq_server
     networks:
