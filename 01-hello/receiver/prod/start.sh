@@ -9,3 +9,4 @@ set -o nounset
 
 echo "run /start.sh commands"
 python recv.py
+echo "run python recv.py commands"
