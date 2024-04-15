@@ -78,8 +78,8 @@ RUN sed -i 's/\r$//g' $APP_HOME/entrypoint.sh
 RUN chmod +x  $APP_HOME/entrypoint.sh
 
 COPY ./sender/prod/start.sh .
-RUN sed -i 's/\r$//g' $APP_HOME/start.sh.sh
-RUN chmod +x  $APP_HOME/start.sh.sh
+RUN sed -i 's/\r$//g' $APP_HOME/start.sh
+RUN chmod +x  $APP_HOME/start.sh
 
 
 # copy project
