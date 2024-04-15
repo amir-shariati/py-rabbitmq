@@ -24,7 +24,8 @@ RUN pip install flake8==6.0.0
 COPY . /usr/src/app/
 
 #RUN flake8 --ignore=E501,F401 .
-RUN flake8 --ignore=E501,F401,F403 ./config
+RUN #flake8 --ignore=E501,F401,F403 ./config
+RUN flake8 --ignore=E501,F401,F403
 
 # install dependencies
 COPY ./requirements/common.txt ./common.txt
