@@ -10,11 +10,11 @@ COPY ./requirements/common.txt /common.txt
 COPY ./requirements/dev.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
-COPY ./sender/dev/entrypoint.sh /entrypoint.sh
+COPY ./receiver/dev/entrypoint.sh /entrypoint.sh
 RUN sed -i 's/\r$//g' /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-COPY ./sender/dev/start.sh /start.sh
+COPY ./receiver/dev/start.sh /start.sh
 RUN sed -i 's/\r$//g' /start.sh
 RUN chmod +x /start.sh
 
