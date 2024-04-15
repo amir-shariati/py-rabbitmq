@@ -7,4 +7,4 @@ set -o pipefail
 # exits if any of your variables is not set
 set -o nounset
 
-python receive.py
+python recv.py
