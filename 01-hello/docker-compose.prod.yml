@@ -44,9 +44,9 @@ services:
     build:
       context: .
       dockerfile: receiver/prod/Dockerfile
-    volumes:
-      - ./receive:/app
-    command: /start.sh.sh
+#    volumes:
+#      - ./receiver:/app
+    command: /home/app/recv/start.sh
     depends_on:
       - rabbitmq_server
     networks:
