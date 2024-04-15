@@ -7,7 +7,7 @@ set -o pipefail
 # exits if any of your variables is not set
 set -o nounset
 
-postgres_ready() {
+rabbitmq_ready() {
 python << END
 
 import sys
@@ -28,7 +28,7 @@ sys.exit(0)
 
 END
 }
-until postgres_ready; do
+until rabbitmq_ready; do
   >&2 echo 'Waiting for RabbitMQ to become available...'
   sleep 1
 done
