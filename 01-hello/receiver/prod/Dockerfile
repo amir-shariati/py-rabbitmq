@@ -84,7 +84,7 @@ RUN chmod +x  $APP_HOME/start.sh
 
 # copy project
 #COPY . $APP_HOME
-COPY ./receiver/receive.py $APP_HOME
+COPY ./receiver/recv.py $APP_HOME
 
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME
