@@ -73,9 +73,9 @@ RUN pip install --no-cache /wheels/*
 
 
 #COPY ./compose/production/django/entrypoint.sh .
-COPY ./sender/prod/entrypoint.sh .
-RUN sed -i 's/\r$//g' $APP_HOME/entrypoint.sh.sh
-RUN chmod +x  $APP_HOME/entrypoint.sh.sh
+COPY ./receiver/prod/entrypoint.sh .
+RUN sed -i 's/\r$//g' $APP_HOME/entrypoint.sh
+RUN chmod +x  $APP_HOME/entrypoint.sh
 
 COPY ./sender/prod/start.sh .
 RUN sed -i 's/\r$//g' $APP_HOME/start.sh.sh
