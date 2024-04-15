@@ -51,7 +51,7 @@ RUN addgroup --system app && adduser --system --group app
 ENV HOME=/home/app
 #ENV HOME=/home
 #ENV APP_HOME=/home/app/web
-ENV APP_HOME=/home/app/send
+ENV APP_HOME=/home/app/recv
 RUN mkdir $APP_HOME
 
 WORKDIR $APP_HOME
