@@ -33,6 +33,8 @@ try:
 
     parameters = pika.ConnectionParameters(host='rabbitmq_server', port=5672, credentials=credentials)
 
+    connection = pika.BlockingConnection(parameters=parameters)
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
