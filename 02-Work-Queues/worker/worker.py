@@ -6,6 +6,10 @@ import uuid
 from typing import TypedDict
 
 
+class BodyType(TypedDict):
+    task_id: str
+    time: str
+    delay: int
 
 username = os.environ['RABBITMQ_DEFAULT_USER']
 password = os.environ['RABBITMQ_DEFAULT_PASS']
