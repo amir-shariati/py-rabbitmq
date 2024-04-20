@@ -40,6 +40,8 @@ try:
     channel.queue_declare(queue='task_queue', durable=True)
     print(' [*] Waiting for messages. To exit press CTRL+C')
 
+    channel.basic_qos(prefetch_count=1)
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
