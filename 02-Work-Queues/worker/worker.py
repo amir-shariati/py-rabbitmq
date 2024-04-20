@@ -42,6 +42,11 @@ try:
 
     channel.basic_qos(prefetch_count=1)
 
+    channel.basic_consume(
+        queue='task_queue',
+        on_message_callback=on_message_callback_func
+    )
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
