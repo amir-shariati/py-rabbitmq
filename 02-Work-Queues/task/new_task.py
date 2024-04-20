@@ -20,6 +20,12 @@ try:
 
     channel.queue_declare(queue='task_queue', durable=True)
 
+    message = {
+        'task_id': uuid.uuid4().hex,
+        'time': datetime.datetime.now().time().strftime("%H:%M:%S"),
+        'delay': random.randint(2, 5)
+    }
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
