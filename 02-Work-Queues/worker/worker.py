@@ -47,6 +47,7 @@ try:
         on_message_callback=on_message_callback_func
     )
 
+    channel.start_consuming()
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
