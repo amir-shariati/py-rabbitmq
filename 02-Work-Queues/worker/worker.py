@@ -37,6 +37,9 @@ try:
 
     channel = connection.channel()
 
+    channel.queue_declare(queue='task_queue', durable=True)
+    print(' [*] Waiting for messages. To exit press CTRL+C')
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
