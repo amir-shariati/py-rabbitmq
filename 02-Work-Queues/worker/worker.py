@@ -35,6 +35,8 @@ try:
 
     connection = pika.BlockingConnection(parameters=parameters)
 
+    channel = connection.channel()
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
