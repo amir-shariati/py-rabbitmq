@@ -26,6 +26,14 @@ try:
         'delay': random.randint(2, 5)
     }
 
+    channel.basic_publish(
+        exchange='',
+        routing_key='task_queue',
+        body=json.dumps(message),
+        properties=pika.BasicProperties(delivery_mode=pika.DeliveryMode.Persistent)
+    )
+
+    print(f" [x] Sent {message}")
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
