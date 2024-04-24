@@ -42,6 +42,7 @@ try:
     result = channel.queue_declare(queue='', exclusive=True)
     queue_name = result.method.queue
 
+    channel.queue_bind(queue=queue_name, exchange='logs')
 
 
 except pika.exceptions as e:
