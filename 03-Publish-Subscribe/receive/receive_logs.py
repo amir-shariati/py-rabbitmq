@@ -11,3 +11,7 @@ class BodyType(TypedDict):
     log_msg: str
 
 
+username = os.environ['RABBITMQ_DEFAULT_USER']
+password = os.environ['RABBITMQ_DEFAULT_PASS']
+
+
