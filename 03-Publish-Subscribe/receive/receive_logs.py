@@ -46,6 +46,7 @@ try:
 
     channel.basic_consume(queue=queue_name, on_message_callback=on_message_callback_func, auto_ack=True)
 
+    channel.start_consuming()
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
