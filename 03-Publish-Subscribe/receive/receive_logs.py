@@ -44,6 +44,8 @@ try:
 
     channel.queue_bind(queue=queue_name, exchange='logs')
 
+    channel.basic_consume(queue=queue_name, on_message_callback=on_message_callback_func, auto_ack=True)
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
