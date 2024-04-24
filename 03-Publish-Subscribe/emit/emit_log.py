@@ -18,6 +18,9 @@ def publish_msg(ch: pika.adapters.blocking_connection.BlockingChannel):
         'log_msg': f'this is log {random.randint(1,10)}'
     }
 
+    ch.basic_publish(exchange='logs', routing_key='', body=json.dumps(message))
+
+
 
     channel = connection.channel()
 
