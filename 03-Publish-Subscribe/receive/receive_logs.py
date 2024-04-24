@@ -15,3 +15,11 @@ username = os.environ['RABBITMQ_DEFAULT_USER']
 password = os.environ['RABBITMQ_DEFAULT_PASS']
 
 
+def on_message_callback_func(
+        ch: pika.adapters.blocking_connection.BlockingChannel,
+        method: pika.spec.Basic.Deliver,
+        properties: pika.spec.BasicProperties,
+        body: bytes
+):
+
+
