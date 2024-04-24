@@ -37,6 +37,8 @@ try:
 
     channel = connection.channel()
 
+    channel.exchange_declare(exchange='logs', exchange_type=ExchangeType.fanout)
+
 
 
 except pika.exceptions as e:
