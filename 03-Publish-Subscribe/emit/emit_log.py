@@ -11,3 +11,6 @@ username = os.environ['RABBITMQ_DEFAULT_USER']
 password = os.environ['RABBITMQ_DEFAULT_PASS']
 
 
+def publish_msg(ch: pika.adapters.blocking_connection.BlockingChannel):
+
+
