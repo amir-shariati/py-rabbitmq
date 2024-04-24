@@ -39,6 +39,9 @@ try:
 
     channel.exchange_declare(exchange='logs', exchange_type=ExchangeType.fanout)
 
+    result = channel.queue_declare(queue='', exclusive=True)
+    queue_name = result.method.queue
+
 
 
 except pika.exceptions as e:
