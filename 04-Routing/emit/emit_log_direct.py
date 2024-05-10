@@ -32,4 +32,4 @@ except pika.exceptions as e:
     print(f'exception is: {e}')
 
 else:
-   pass
+    connection.close()
