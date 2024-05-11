@@ -40,6 +40,8 @@ services:
     image: py-recv-direct-log-dev-1
     container_name: py-recv-direct-log-dev-cnt-1
     env_file: env/.env.dev
+    environment:
+      - LOG_LEVELS=info,warn,error
     build:
       context: .
       dockerfile: receive/dev/Dockerfile
