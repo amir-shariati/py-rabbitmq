@@ -30,7 +30,7 @@ try:
 
     channel = connection.channel()
 
-    exchange = channel.exchange_declare(exchange='direct_logs', exchange_type=ExchangeType.direct)
+    exchange = channel.exchange_declare(exchange=exchange_name, exchange_type=ExchangeType.direct)
     print(f'{exchange}')
 
     log_type = {
