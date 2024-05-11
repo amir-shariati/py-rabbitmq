@@ -11,10 +11,11 @@ username = os.environ['RABBITMQ_DEFAULT_USER']
 password = os.environ['RABBITMQ_DEFAULT_PASS']
 
 
-def publish_msg(ch: pika.adapters.blocking_connection.BlockingChannel):
+def publish_msg(ch: pika.adapters.blocking_connection.BlockingChannel, log_type):
     message = {
         'log_id': uuid.uuid4().hex,
         'time': datetime.datetime.now().time().strftime("%H:%M:%S"),
+        'log_type': log_type,
         'log_msg': f'this is log {random.randint(1,10)}'
     }
 
