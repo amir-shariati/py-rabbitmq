@@ -35,9 +35,9 @@ try:
     channel.exchange_declare(exchange=exchange_name, exchange_type=ExchangeType.direct)
 
     log_type = {
-        'info': 'info',
-        'warn': 'warn',
-        'error': 'error'
+        'info': f'this is log info {random.randint(1,10)}',
+        'warn': f'this is log warn{random.randint(1,10)}',
+        'error': f'this is log error{random.randint(1,10)}'
     }
 
     for k, v in log_type.items():
