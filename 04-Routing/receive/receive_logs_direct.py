@@ -42,5 +42,8 @@ try:
 
     channel.exchange_declare(exchange=exchange_name, exchange_type=ExchangeType.direct)
 
+    result = channel.queue_declare(queue='', exclusive=True)
+    queue_name = result.method.queue
+
 except pika.exceptions as e:
     print(f'exception is: {e}')
