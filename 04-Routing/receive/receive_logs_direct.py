@@ -31,3 +31,7 @@ def on_message_callback_func(
     print(f' [x] Routing_key {method.routing_key}')
     print(f' [x] LogID: {body["log_id"]}, log message {body["log_msg"]} ')
 
+
+try:
+except pika.exceptions as e:
+    print(f'exception is: {e}')
