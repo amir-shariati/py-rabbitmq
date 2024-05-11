@@ -45,5 +45,10 @@ try:
     result = channel.queue_declare(queue='', exclusive=True)
     queue_name = result.method.queue
 
+    if not log_levels:
+        # sys.stderr.write("Usage: %s [info] [warning] [error]\n" % sys.argv[0])
+        print('set env LOG_LEVELS to [info] [warn] [error]')
+        sys.exit(1)
+
 except pika.exceptions as e:
     print(f'exception is: {e}')
