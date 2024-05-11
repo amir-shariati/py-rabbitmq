@@ -21,7 +21,8 @@ def publish_msg(ch: pika.adapters.blocking_connection.BlockingChannel, log_type,
         'log_msg': log_msg
     }
 
-    ch.basic_publish(exchange=exchange_name, routing_key='', body=json.dumps(message))
+    ch.basic_publish(exchange=exchange_name, routing_key=log_type, body=json.dumps(message))
+    # print(f'publish ')
 
 try:
     # Set the connection parameters to connect to localhost on port 5672
