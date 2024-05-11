@@ -50,5 +50,9 @@ try:
         print('set env LOG_LEVELS to [info] [warn] [error]')
         sys.exit(1)
 
+    binding_keys = log_levels.split(',')
+    print(f'log_levels {log_levels}')
+    print(f'binding_keys {binding_keys}')
+
 except pika.exceptions as e:
     print(f'exception is: {e}')
