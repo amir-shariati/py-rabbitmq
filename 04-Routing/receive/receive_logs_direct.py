@@ -8,6 +8,7 @@ from typing import TypedDict
 class BodyType(TypedDict):
     log_id: str
     time: str
+    log_type: str
     log_msg: str
 
 
