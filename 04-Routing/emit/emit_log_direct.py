@@ -12,12 +12,13 @@ password = os.environ['RABBITMQ_DEFAULT_PASS']
 
 exchange_name = 'direct_logs'
 
-def publish_msg(ch: pika.adapters.blocking_connection.BlockingChannel, log_type):
+
+def publish_msg(ch: pika.adapters.blocking_connection.BlockingChannel, log_type, log_msg):
     message = {
         'log_id': uuid.uuid4().hex,
         'time': datetime.datetime.now().time().strftime("%H:%M:%S"),
         'log_type': log_type,
-        'log_msg': f'this is log {random.randint(1,10)}'
+        'log_msg': log_msg
     }
 
     ch.basic_publish(exchange=exchange_name, routing_key='', body=json.dumps(message))
