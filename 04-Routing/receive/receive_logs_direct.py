@@ -17,3 +17,6 @@ password = os.environ['RABBITMQ_DEFAULT_PASS']
 
 log_levels = os.environ['LOG_LEVELS']
 
+exchange_name = 'direct_logs'
+
+
