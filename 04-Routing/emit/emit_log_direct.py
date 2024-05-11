@@ -31,6 +31,13 @@ try:
     exchange = channel.exchange_declare(exchange='direct_logs', exchange_type=ExchangeType.direct)
     print(f'{exchange}')
 
+    log_type = {
+        'info': 'info',
+        'warn': 'warn',
+        'error': 'error'
+    }
+
+
 except pika.exceptions as e:
     print(f'exception is: {e}')
 
