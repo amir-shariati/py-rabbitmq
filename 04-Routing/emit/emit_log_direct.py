@@ -39,6 +39,9 @@ try:
         'error': 'error'
     }
 
+    for k, v in log_type.items():
+        publish_msg(ch=channel, log_type=v)
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
