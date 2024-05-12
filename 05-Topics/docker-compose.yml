@@ -1,0 +1,82 @@
+version: '3.7'
+
+
+services:
+
+  rabbitmq_server:
+    container_name: rabbitmq_container
+    image: rabbitmq:3-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=1234
+    volumes:
+        - rabbitmq-data:/var/lib/rabbitmq/
+        - rabbitmq-log:/var/log/rabbitmq
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+    networks:
+       - py-rabbitmq-net-dev
+    restart: unless-stopped
+
+  emit-topic-log-dev:
+    image: py-emit-topic-log-dev
+    container_name: py-emit-topic-log-dev-cnt
+    env_file: env/.env.
+    environment:
+      - LOG_TOPIC=info.warn.error
+    build:
+      context: .
+      dockerfile: emit/dev/Dockerfile
+    volumes:
+      - ./emit:/app
+    command: /start.sh
+    depends_on:
+      - rabbitmq_server
+    networks:
+      - py-rabbitmq-net-dev
+
+  recv-topic-log-dev-1:
+    image: py-recv-topic-log-dev-1
+    container_name: py-recv-topic-log-dev-cnt-1
+    env_file: env/.env.dev
+    environment:
+      - LOG_TOPIC=info.#
+    build:
+      context: .
+      dockerfile: receive/dev/Dockerfile
+    volumes:
+      - ./receive:/app
+    command: /start.sh
+    depends_on:
+      - rabbitmq_server
+    networks:
+      - py-rabbitmq-net-dev
+
+  recv-topic-log-dev-2:
+    image: py-recv-topic-log-dev-2
+    container_name: py-recv-topic-log-dev-cnt-2
+    env_file: env/.env.dev
+    environment:
+      - LOG_TOPIC=*.warn.*,*.*.error
+    build:
+      context: .
+      dockerfile: receive/dev/Dockerfile
+    volumes:
+      - ./receive:/app
+    command: /start.sh
+    depends_on:
+      - rabbitmq_server
+    networks:
+      - py-rabbitmq-net-dev
+
+volumes:
+  rabbitmq-data:
+  rabbitmq-log:
+
+
+networks:
+  py-rabbitmq-net-dev:
+    driver: bridge
