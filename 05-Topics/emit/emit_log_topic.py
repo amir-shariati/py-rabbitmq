@@ -36,6 +36,13 @@ try:
 
     channel.exchange_declare(exchange=exchange_name, exchange_type=ExchangeType.topic)
 
+    log_topics = {
+        'info.*.*': f'this is log for topic: info.*.* -> {random.randint(1,10)}',
+        '*.warn.*': f'this is log for topic: *.warn.* -> {random.randint(1,10)}',
+        '#.error': f'this is log for topic: #.error -> {random.randint(1,10)}',
+        '*.*.error': f'this is log for topic: *.*.error -> {random.randint(1,10)}',
+    }
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
