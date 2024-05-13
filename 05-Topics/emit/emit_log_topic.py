@@ -26,3 +26,8 @@ def publish_msg(ch: pika.adapters.blocking_connection.BlockingChannel, log_topic
     ch.basic_publish(exchange=exchange_name, routing_key=log_topic, body=json.dumps(message))
 
 
+try:
+
+except pika.exceptions as e:
+    print(f'exception is: {e}')
+
