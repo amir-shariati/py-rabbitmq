@@ -24,7 +24,7 @@ services:
   emit-topic-log-dev:
     image: py-emit-topic-log-dev
     container_name: py-emit-topic-log-dev-cnt
-    env_file: env/.env.
+    env_file: env/.env.dev
     environment:
       - LOG_TOPIC=info.warn.error
     build:
