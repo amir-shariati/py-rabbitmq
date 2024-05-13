@@ -34,6 +34,8 @@ try:
 
     channel = connection.channel()
 
+    channel.exchange_declare(exchange=exchange_name, exchange_type=ExchangeType.topic)
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
