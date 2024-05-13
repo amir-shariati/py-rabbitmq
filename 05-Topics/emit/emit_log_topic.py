@@ -36,3 +36,5 @@ try:
 except pika.exceptions as e:
     print(f'exception is: {e}')
 
+else:
+    connection.close()
