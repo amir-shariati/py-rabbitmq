@@ -43,6 +43,9 @@ try:
         '*.*.error': f'this is log for topic: *.*.error -> {random.randint(1,10)}',
     }
 
+    for k, v in log_topics.items():
+        publish_msg(ch=channel, log_topic=k, log_msg=v)
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
