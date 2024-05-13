@@ -41,7 +41,7 @@ try:
     }
 
     for k, v in log_type.items():
-        publish_msg(ch=channel, log_type=v)
+        publish_msg(ch=channel, log_type=k, log_msg=v)
 
 
 except pika.exceptions as e:
