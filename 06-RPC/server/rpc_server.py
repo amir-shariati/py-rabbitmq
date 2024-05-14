@@ -20,3 +20,7 @@ password = os.environ['RABBITMQ_DEFAULT_PASS']
 queue_name = 'rpc_queue'
 
 
+def increment(n):
+    return n + 1
+
+
