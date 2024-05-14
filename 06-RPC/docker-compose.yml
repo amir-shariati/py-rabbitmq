@@ -1,0 +1,62 @@
+version: '3.7'
+
+
+services:
+
+  rabbitmq_server:
+    container_name: rabbitmq_container
+    image: rabbitmq:3-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=1234
+    volumes:
+        - rabbitmq-data:/var/lib/rabbitmq/
+        - rabbitmq-log:/var/log/rabbitmq
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+    networks:
+       - py-rabbitmq-net-dev
+    restart: unless-stopped
+
+  rpc-server-dev:
+    image: py-rpc-server-dev
+    container_name: py-rpc-server-dev-cnt
+    env_file: env/.env.dev
+    build:
+      context: .
+      dockerfile: server/dev/Dockerfile
+    volumes:
+      - ./server:/app
+    command: /start.sh
+    depends_on:
+      - rabbitmq_server
+    networks:
+      - py-rabbitmq-net-dev
+
+  rpc-client-dev:
+    image: py-rpc-client-dev
+    container_name: py-rpc-client-dev-cnt
+    env_file: env/.env.dev
+    build:
+      context: .
+      dockerfile: client/dev/Dockerfile
+    volumes:
+      - ./client:/app
+    command: /start.sh
+    depends_on:
+      - rabbitmq_server
+    networks:
+      - py-rabbitmq-net-dev
+
+
+volumes:
+  rabbitmq-data:
+  rabbitmq-log:
+
+
+networks:
+  py-rabbitmq-net-dev:
+    driver: bridge
