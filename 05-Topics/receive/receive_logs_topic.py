@@ -57,5 +57,7 @@ try:
         print(f'bing  queue:{queue_name} to exchange:{exchange_name} by binding_key:{binding_key}')
         channel.queue_bind(queue=queue_name, exchange=exchange_name, routing_key=binding_key)
 
+    channel.basic_consume(queue=queue_name, on_message_callback=on_message_callback_func, auto_ack=True)
+
 except pika.exceptions as e:
     print(f'exception is: {e}')
