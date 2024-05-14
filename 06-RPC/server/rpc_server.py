@@ -24,3 +24,14 @@ def increment(n):
     return n + 1
 
 
+def publish_msg(ch: pika.adapters.blocking_connection.BlockingChannel, correlation_id, reply_to, delivery_tag, data):
+    ch.basic_publish(
+        exchange='',
+        routing_key=reply_to,
+        properties=pika.BasicProperties(correlation_id=correlation_id),
+        body=json.dumps(data)
+    )
+    print(f' [x] Sent {data}')
+    ch.basic_ack(delivery_tag=delivery_tag)
+
+
