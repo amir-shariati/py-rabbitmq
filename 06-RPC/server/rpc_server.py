@@ -17,3 +17,6 @@ class BodyType(TypedDict):
 username = os.environ['RABBITMQ_DEFAULT_USER']
 password = os.environ['RABBITMQ_DEFAULT_PASS']
 
+queue_name = 'rpc_queue'
+
+
