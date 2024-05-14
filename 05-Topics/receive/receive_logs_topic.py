@@ -45,5 +45,9 @@ try:
     result = channel.queue_declare(queue='', exclusive=True)
     queue_name = result.method.queue
 
+    if not log_topics:
+        print('set env LOG_TOPIC to [info].[warn].[error]')
+        sys.exit(1)
+
 except pika.exceptions as e:
     print(f'exception is: {e}')
