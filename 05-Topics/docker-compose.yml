@@ -60,7 +60,7 @@ services:
     container_name: py-recv-topic-log-dev-cnt-2
     env_file: env/.env.dev
     environment:
-      - LOG_TOPIC=*.warn.*,*.*.error
+      - LOG_TOPIC=*.warn.*,#.error
     build:
       context: .
       dockerfile: receive/dev/Dockerfile
