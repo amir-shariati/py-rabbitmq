@@ -17,3 +17,6 @@ password = os.environ['RABBITMQ_DEFAULT_PASS']
 
 log_topics = os.environ['LOG_TOPIC']
 
+exchange_name = 'topic_logs'
+
+
