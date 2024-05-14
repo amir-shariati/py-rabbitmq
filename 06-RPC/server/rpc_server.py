@@ -66,6 +66,7 @@ try:
 
     channel.queue_declare(queue=queue_name)
 
+    channel.basic_qos(prefetch_count=1)
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
