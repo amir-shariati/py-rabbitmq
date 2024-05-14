@@ -64,6 +64,8 @@ try:
 
     channel = connection.channel()
 
+    channel.queue_declare(queue=queue_name)
+
 
 except pika.exceptions as e:
     print(f'exception is: {e}')
