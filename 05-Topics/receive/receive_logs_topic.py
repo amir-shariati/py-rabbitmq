@@ -53,5 +53,9 @@ try:
     print(f'log_topic {log_topics}')
     print(f'binding_keys {binding_keys}')
 
+    for binding_key in binding_keys:
+        print(f'bing  queue:{queue_name} to exchange:{exchange_name} by binding_key:{binding_key}')
+        channel.queue_bind(queue=queue_name, exchange=exchange_name, routing_key=binding_key)
+
 except pika.exceptions as e:
     print(f'exception is: {e}')
