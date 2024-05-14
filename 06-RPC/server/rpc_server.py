@@ -14,3 +14,6 @@ class BodyType(TypedDict):
     response: Optional[int]
 
 
+username = os.environ['RABBITMQ_DEFAULT_USER']
+password = os.environ['RABBITMQ_DEFAULT_PASS']
+
