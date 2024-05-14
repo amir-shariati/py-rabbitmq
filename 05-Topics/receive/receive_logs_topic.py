@@ -49,5 +49,9 @@ try:
         print('set env LOG_TOPIC to [info].[warn].[error]')
         sys.exit(1)
 
+    binding_keys = log_topics.split(',')
+    print(f'log_topic {log_topics}')
+    print(f'binding_keys {binding_keys}')
+
 except pika.exceptions as e:
     print(f'exception is: {e}')
