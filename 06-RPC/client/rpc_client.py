@@ -22,3 +22,6 @@ password = os.environ['RABBITMQ_DEFAULT_PASS']
 queue_name = 'rpc_queue'
 
 
+class Client(object):
+
+
