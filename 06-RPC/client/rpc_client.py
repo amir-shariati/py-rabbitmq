@@ -34,4 +34,5 @@ class Client(object):
         self.callback_queue = result.method.queue
 
 
+        self.response: BodyType | None = None
 
