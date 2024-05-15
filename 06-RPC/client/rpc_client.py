@@ -35,4 +35,6 @@ class Client(object):
 
 
         self.response: BodyType | None = None
+        self.corr_id = None
+
 
