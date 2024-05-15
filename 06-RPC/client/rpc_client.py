@@ -58,6 +58,7 @@ class Client(object):
 
     def call(self, num: int) -> BodyType | None:
         self.response = None
+        self.corr_id = str(uuid.uuid4())
 
 
 
