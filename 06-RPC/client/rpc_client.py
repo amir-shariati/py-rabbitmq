@@ -59,6 +59,11 @@ class Client(object):
     def call(self, num: int) -> BodyType | None:
         self.response = None
         self.corr_id = str(uuid.uuid4())
+        message = {
+            'time': datetime.datetime.now().time().strftime("%H:%M:%S"),
+            'correlation_id': self.corr_id,
+            'request': num,
+        }
 
 
 
