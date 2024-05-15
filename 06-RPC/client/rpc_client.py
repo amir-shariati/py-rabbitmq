@@ -56,4 +56,8 @@ class Client(object):
             body=data
         )
 
+    def call(self, num: int) -> BodyType | None:
+        self.response = None
+
+
 
