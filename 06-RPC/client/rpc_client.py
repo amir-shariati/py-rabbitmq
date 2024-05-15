@@ -64,6 +64,8 @@ class Client(object):
             'correlation_id': self.corr_id,
             'request': num,
         }
+        self.publish_msg(data=json.dumps(message))
+
 
 
 
