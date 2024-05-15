@@ -66,6 +66,8 @@ class Client(object):
         }
         self.publish_msg(data=json.dumps(message))
 
+        while self.response is None:
+            self.connection.process_data_events()
 
 
 
