@@ -76,3 +76,7 @@ if __name__ == '__main__':
 
     client = Client()
 
+    print(" [x] Requesting increment(30)")
+    time.sleep(1)
+    response = client.call(30)
+    print(f" [.] Got {response}")
