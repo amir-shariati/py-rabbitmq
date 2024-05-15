@@ -33,6 +33,7 @@ class Client(object):
         result = self.channel.queue_declare(queue='', exclusive=True)
         self.callback_queue = result.method.queue
 
+        self.channel.basic_consume(queue=self.callback_queue, on_message_callback=self.on_response, auto_ack=True)
 
         self.response: BodyType | None = None
         self.corr_id = None
