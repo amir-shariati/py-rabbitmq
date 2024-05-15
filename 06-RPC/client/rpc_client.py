@@ -30,5 +30,8 @@ class Client(object):
 
         self.channel: pika.adapters.blocking_connection.BlockingChannel = self.connection.channel()
 
+        result = self.channel.queue_declare(queue='', exclusive=True)
+        self.callback_queue = result.method.queue
+
 
 
