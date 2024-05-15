@@ -23,5 +23,7 @@ queue_name = 'rpc_queue'
 
 
 class Client(object):
+    def __init__(self):
+
 
 
