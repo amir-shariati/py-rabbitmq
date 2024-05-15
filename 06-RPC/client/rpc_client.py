@@ -28,6 +28,7 @@ class Client(object):
         parameters = pika.ConnectionParameters(host='rabbitmq_server', port=5672, credentials=credentials)
         self.connection = pika.BlockingConnection(parameters=parameters)
 
+        self.channel: pika.adapters.blocking_connection.BlockingChannel = self.connection.channel()
 
 
 
