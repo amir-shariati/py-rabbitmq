@@ -24,6 +24,10 @@ queue_name = 'rpc_queue'
 
 class Client(object):
     def __init__(self):
+        credentials = pika.PlainCredentials(username=username, password=password)
+        parameters = pika.ConnectionParameters(host='rabbitmq_server', port=5672, credentials=credentials)
+        self.connection = pika.BlockingConnection(parameters=parameters)
+
 
 
 
