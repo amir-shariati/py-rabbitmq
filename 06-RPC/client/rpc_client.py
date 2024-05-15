@@ -37,4 +37,14 @@ class Client(object):
         self.response: BodyType | None = None
         self.corr_id = None
 
+    def on_response(
+            self,
+            ch: pika.adapters.blocking_connection.BlockingChannel,
+            method: pika.spec.Basic.Deliver,
+            props: pika.spec.BasicProperties,
+            body: bytes
+    ):
+        if self.corr_id == props.correlation_id:
+            self.response = json.loads(body)
+
 
