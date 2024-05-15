@@ -48,4 +48,12 @@ class Client(object):
         if self.corr_id == props.correlation_id:
             self.response = json.loads(body)
 
+    def publish_msg(self, data):
+        self.channel.basic_publish(
+            exchange='',
+            routing_key=queue_name,
+            properties=pika.BasicProperties(correlation_id=self.corr_id, reply_to=self.callback_queue),
+            body=data
+        )
+
 
