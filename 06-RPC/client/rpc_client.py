@@ -72,4 +72,5 @@ class Client(object):
         return self.response
 
 
+if __name__ == '__main__':
 
